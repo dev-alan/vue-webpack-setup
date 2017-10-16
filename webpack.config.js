@@ -4,7 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const extractStylesPlugin = new ExtractTextPlugin('styles.min.css');
 const extractHTMLPlugin = new HtmlWebpackPlugin({
   hash: true,
-  filename: '../index.html'
+  filename: '../index.html',
+  inject: 'body',
+  // template: './src/index.vue',
+  template: './src/index.template.ejs',
+  chunksSortMode: 'dependency'
 });
 
 module.exports = {
@@ -15,6 +19,18 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.css$/,
         use: extractStylesPlugin.extract([ 'css-loader' ])
@@ -50,6 +66,11 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
   },
   plugins: 
   [
