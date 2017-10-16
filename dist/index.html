@@ -2,8 +2,21 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>My App</title>
-  <link href="assets/styles.min.css?43c9c285964ff342ffd1" rel="stylesheet"></head>
+  <link href="assets/styles.min.css?22dd26e2f16e9a3b90c1" rel="stylesheet"></head>
   <body>
-    <div id="app"></div>
-  <script type="text/javascript" src="assets/bundle.min.js?43c9c285964ff342ffd1"></script></body>
+    <div id="app">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <h1>Vue + Bootstrap Demo</h1>
+            <p>Setting up Vue with with Webpack. No vue-cli.</p>
+            <div class="form-group">
+              <input type="text" placeholder="Enter your name..." v-model="name" class="form-control">
+            </div>
+            <p v-if="name.trim().length">Hi {{ name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script type="text/javascript" src="assets/bundle.min.js?22dd26e2f16e9a3b90c1"></script></body>
 </html>

@@ -4,6 +4,19 @@
     <title>My App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <h1>Vue + Bootstrap Demo</h1>
+            <p>Setting up Vue with with Webpack. No vue-cli.</p>
+            <div class="form-group">
+              <input type="text" placeholder="Enter your name..." v-model="name" class="form-control">
+            </div>
+            <p v-if="name.trim().length">Hi {{ name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
